@@ -1,0 +1,21 @@
+
+.topButton {
+    -fx-text-fill: purple;
+    -fx-font-size: 60;
+    -fx-font-family: "Arial Black";
+    -fx-padding: 10;
+    -fx-background-color: lightslategrey;
+}
+
+
+.Logo {
+    -fx-text-fill: purple;
+    -fx-font-size: 12;
+    -fx-font-family: "Arial Black";
+    -fx-padding: 10;
+    -fx-background-color: lightslategrey;
+}
+
+.funkyPane {
+    -fx-background-color: lightgrey;
+}
