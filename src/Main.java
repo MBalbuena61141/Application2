@@ -21,15 +21,39 @@ public class Main extends Application {
          scene.getStylesheets().add("CSS.css");
 
 
+         //Top Buttons (Logo, search, watchlist and login/sign up)//
+
          HBox topPane = new HBox(20);
+
+
          Button logo = new Button("Logo.");
          logo.getStyleClass().add("Logo");
          topPane.getChildren().add(logo);
-         Button search = new Button("Search.");
+
+         Button search = new Button("Search");
+         search.setPrefSize(200,25);
+         search.getStyleClass().add("topButtons");
          topPane.getChildren().add(search);
+
+         Button watchList = new Button("Your Watch List");
+         watchList.setPrefSize(150,25);
+         watchList.getStyleClass().add("topButtons");
+         topPane.getChildren().add(watchList);
+
+         Button logIn = new Button("LogIn");
+         logIn.setPrefSize(80,25);
+         logIn.getStyleClass().add("topButtons");
+         topPane.getChildren().add(logIn);
+
+         Button signUp = new Button("SignUp");
+         signUp.setPrefSize(80,25);
+         signUp.getStyleClass().add("topButtons");
+         topPane.getChildren().add(signUp);
+
+
          root.setTop(topPane);
          topPane.setAlignment(Pos.TOP_LEFT);
-         topPane.getStyleClass().add("funkyPane");
+         topPane.getStyleClass().add("logoPane");
          BorderPane.setAlignment(topPane, Pos.TOP_CENTER);
 
          VBox leftPane = new VBox(20);
