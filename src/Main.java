@@ -70,20 +70,22 @@ public class Main extends Application {
 
 
          VBox centerPane = new VBox(20);
+         centerPane.setPrefSize(341,761);
 
-
-
-
-         /* Button trailerBox = new Button("Trailer one.");
-         trailerBox.setPrefSize(200,100);
-         centerPane.getChildren().add(trailerBox);
-
+         HBox boxCenterPane = new HBox(20);
+         boxCenterPane.setPrefSize( 341, 761);
+         boxCenterPane.getStyleClass().add("centerPane");
 
          Button centerButton2 = new Button("trailer two");
-         trailerBox.setPrefSize(200,100);
-         centerPane.getChildren().add(centerButton2);*/
+         centerButton2.setPrefSize(200,100);
+         boxCenterPane.getChildren().add(centerButton2);
+         centerPane.getChildren().add(boxCenterPane);
+         boxCenterPane.setAlignment(Pos.CENTER);
+
 
          root.setCenter(centerPane);
+
+
 
 
 

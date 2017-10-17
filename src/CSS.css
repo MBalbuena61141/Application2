@@ -19,3 +19,10 @@
 .logoPane {
     -fx-background-color: black;
 }
+.centerPane {
+    -fx-text-fill: grey;
+    -fx-font-size: 12;
+    -fx-font-family: "Arial Black";
+    -fx-padding: 10;
+    -fx-background-color: grey;
+}
