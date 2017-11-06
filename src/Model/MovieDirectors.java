@@ -1,12 +1,12 @@
 package Model;
 
-public class MovieDirector {
+public class MovieDirectors {
 
     private int directorID;
     private String directorName;
 
 
-    public MovieDirector(int directorID, String directorName) {
+    public MovieDirectors(int directorID, String directorName) {
         this.directorID = directorID;
         this.directorName = directorName;
     }
