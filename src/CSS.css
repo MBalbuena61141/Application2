@@ -1,8 +1,4 @@
-.scene{
 
-    -fx-background-color: lightslategrey;
-
-}
 .topButtons {
     -fx-text-fill: white;
     -fx-font-size:16;
@@ -24,7 +20,12 @@
     -fx-background-color: black;
 }
 .panes {
-    -fx-text-fill: grey;
+    -fx-text-fill: navajowhite;
+    -fx-font-size: 10;
+    -fx-font-family: "Arial Black";
+    -fx-background-color: grey;
+.leftPane {
+    -fx-text-fill: navajowhite;
     -fx-font-size: 10;
     -fx-font-family: "Arial Black";
     -fx-background-color: grey;

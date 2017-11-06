@@ -55,6 +55,8 @@ public class Main extends Application {
         topPane.getStyleClass().add("logoPane");
         BorderPane.setAlignment(topPane, Pos.TOP_CENTER);
 
+
+
         //LEFT section.
 
         VBox leftPane = new VBox(20);
@@ -62,32 +64,34 @@ public class Main extends Application {
 
         HBox boxLeftPane = new HBox(20);
         boxLeftPane.setPrefSize(341, 768);
-        boxLeftPane.getStylesheets().add("panes");
+        boxLeftPane.getStylesheets().add("leftPane");
 
-
-        Button trailerButton = new Button("I am left.");
-        trailerButton.setPrefSize(300, 250);
+        Button trailerButton = new Button("trailer two");
+        trailerButton.setPrefSize(200, 250);
         leftPane.getChildren().add(trailerButton);
         leftPane.getChildren().add(boxLeftPane);
-        boxLeftPane.setAlignment(Pos.TOP_CENTER);
+        trailerButton.setAlignment(Pos.CENTER);
+
+
         root.setCenter(leftPane);
 
 
         //MIDDLE section
 
 
-        VBox centerPane = new VBox(20);
+       VBox centerPane = new VBox(20);
         centerPane.setPrefSize(341, 153);
 
         HBox boxCenterPane = new HBox(20);
-        boxCenterPane.setPrefSize(341, 768);
-        boxCenterPane.getStyleClass().add("panes");
+        boxCenterPane.setPrefSize(200, 768);
+        //boxCenterPane.getStyleClass().add("panes");
 
         Button centerButton1 = new Button("trailer one");
-        centerButton1.setPrefSize(300, 250);
+        centerButton1.setPrefSize(200, 250);
         boxCenterPane.getChildren().add(centerButton1);
         centerPane.getChildren().add(boxCenterPane);
-        boxCenterPane.setAlignment(Pos.TOP_CENTER);
+        boxCenterPane.setAlignment(Pos.TOP_LEFT);
+
 
         root.setCenter(centerPane);
 
