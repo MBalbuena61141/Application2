@@ -1,3 +1,6 @@
+import Model.Actor;
+import Model.ActorService;
+import Model.DatabaseConnection;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -5,10 +8,14 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class Main extends Application {
+    public static DatabaseConnection database;
 
     @Override
     public void start(Stage stage) throws Exception {
+        database = new DatabaseConnection("DatabaseProject.db");
 
         BorderPane root = new BorderPane();
 
@@ -64,7 +71,7 @@ public class Main extends Application {
 
         HBox boxLeftPane = new HBox(20);
         boxLeftPane.setPrefSize(341, 768);
-        boxLeftPane.getStylesheets().add("leftPane");
+        boxLeftPane.getStyleClass().add("leftPane");
 
         Button trailerButton = new Button("trailer two");
         trailerButton.setPrefSize(200, 250);
@@ -125,7 +132,19 @@ public class Main extends Application {
         BorderPane.setAlignment(bottomPane, Pos.BOTTOM_CENTER);
 
 
+        ArrayList<Actor> testList = new ArrayList<>();
+
+       ActorService.selectAll(testList, database);
+
+        for (Actor c: testList) {
+            System.out.println(c);
+        }
+
+
     }
+
+
+
 }
 
 
