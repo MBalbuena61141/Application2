@@ -80,6 +80,7 @@ public class Main extends Application {
 
 
 
+
         VBox bottomPane = new VBox(20);
         Button bottomButton1 = new Button("I am bottom.");
         bottomPane.getChildren().add(bottomButton1);
@@ -92,14 +93,20 @@ public class Main extends Application {
         root.setBottom(bottomPane);       // <<<<<<< BOTTOM
 
 
-        ArrayList<Actor> testList = new ArrayList<>();
+        root.setLeft(makeTitlePane("Title"));
+        root.setCenter(makeTitlePane("Title"));
+        root.setRight(makeTitlePane("Title"));
+
+
+
+       /* ArrayList<Actor> testList = new ArrayList<>();
 
        ActorService.selectAll(testList, database);
 
         for (Actor c: testList) {
             System.out.println(c);
         }
-
+        */
 
     }
 
@@ -125,6 +132,24 @@ public class Main extends Application {
         pane.getChildren().add(trailerVideo);
 
         return pane;
+
+    }
+
+
+    public VBox makeTitlePane (String name) {
+
+
+        VBox pane = new VBox(20);
+        pane.setPrefSize(100, 50);
+
+        Button movieName = new Button(name );
+        movieName.setPrefSize(100, 50);
+        pane.getChildren().add(movieName);
+        movieName.setAlignment(Pos.BOTTOM_CENTER );
+
+
+        return pane;
+
 
     }
 
