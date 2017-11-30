@@ -6,6 +6,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -57,69 +60,24 @@ public class Main extends Application {
         signUp.setPrefSize(80, 25);
         signUp.getStyleClass().add("topButtons");
         topPane.getChildren().add(signUp);
-        root.setTop(topPane);
         topPane.setAlignment(Pos.TOP_LEFT);
         topPane.getStyleClass().add("logoPane");
         BorderPane.setAlignment(topPane, Pos.TOP_CENTER);
 
+        root.setTop(topPane);       // <<<<<<< TOP
 
 
-        //LEFT section.
-
-        VBox leftPane = new VBox(20);
-        leftPane.setPrefSize(341, 153);
-
-        HBox boxLeftPane = new HBox(20);
-        boxLeftPane.setPrefSize(341, 768);
-        boxLeftPane.getStyleClass().add("leftPane");
-
-        Button trailerButton = new Button("trailer two");
-        trailerButton.setPrefSize(200, 250);
-        leftPane.getChildren().add(trailerButton);
-        leftPane.getChildren().add(boxLeftPane);
-        trailerButton.setAlignment(Pos.CENTER);
 
 
-        root.setCenter(leftPane);
+
+        root.setLeft(makeTrailerPane("Trailer one"));
+        root.setCenter(makeTrailerPane("Trailer two"));
+        root.setRight(makeTrailerPane("Trailer three"));
 
 
-        //MIDDLE section
 
 
-       VBox centerPane = new VBox(20);
-        centerPane.setPrefSize(341, 153);
 
-        HBox boxCenterPane = new HBox(20);
-        boxCenterPane.setPrefSize(200, 768);
-        //boxCenterPane.getStyleClass().add("panes");
-
-        Button centerButton1 = new Button("trailer one");
-        centerButton1.setPrefSize(200, 250);
-        boxCenterPane.getChildren().add(centerButton1);
-        centerPane.getChildren().add(boxCenterPane);
-        boxCenterPane.setAlignment(Pos.TOP_LEFT);
-
-
-        root.setCenter(centerPane);
-
-
-        //RIGHT Section
-
-
-        VBox rightPane = new VBox(20);
-        rightPane.setPrefSize(341, 153);
-
-        HBox boxRightPane = new HBox(20);
-        boxRightPane.setPrefSize(341, 768);
-        boxRightPane.getStyleClass().add("panes");
-
-        Button rightButton1 = new Button("I am right.");
-        rightPane.getChildren().add(rightButton1);
-        Button rightButton2 = new Button("I am right again.");
-        rightPane.getChildren().add(rightButton2);
-        root.setRight(rightPane);
-        rightPane.setAlignment(Pos.CENTER);
-        BorderPane.setAlignment(rightPane, Pos.CENTER_RIGHT);
 
 
         VBox bottomPane = new VBox(20);
@@ -127,9 +85,11 @@ public class Main extends Application {
         bottomPane.getChildren().add(bottomButton1);
         Button bottomButton2 = new Button("I am bottom again.");
         bottomPane.getChildren().add(bottomButton2);
-        root.setBottom(bottomPane);
+
         bottomPane.setAlignment(Pos.CENTER);
         BorderPane.setAlignment(bottomPane, Pos.BOTTOM_CENTER);
+
+        root.setBottom(bottomPane);       // <<<<<<< BOTTOM
 
 
         ArrayList<Actor> testList = new ArrayList<>();
@@ -144,8 +104,33 @@ public class Main extends Application {
     }
 
 
+    public VBox makeTrailerPane(String name) {
+
+        VBox pane = new VBox(20);
+        pane.setPrefSize(341, 153);
+
+        Button trailerButton = new Button(name);
+        trailerButton.setPrefSize(200, 250);
+        pane.getChildren().add(trailerButton);
+        trailerButton.setAlignment(Pos.CENTER);
+
+        Media trailerMedia = new Media(Main.class.getResource("Videos/video.mp4").toString());
+        MediaPlayer trailerPlayer = new MediaPlayer(trailerMedia);
+        MediaView trailerVideo = new MediaView(trailerPlayer);
+        trailerVideo.setFitWidth(341);
+        trailerVideo.setFitHeight(200);
+
+        trailerPlayer.play();
+
+        pane.getChildren().add(trailerVideo);
+
+        return pane;
+
+    }
+
 
 }
+
 
 
 
