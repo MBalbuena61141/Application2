@@ -15,7 +15,6 @@ public class LogIn {
 
         Pane root = new Pane();
         Scene scene = new Scene(root, 300, 200);
-
         Main.stage.setTitle("Loging In");
         Main.stage.setScene(scene);
         Main.stage.show();
