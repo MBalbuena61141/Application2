@@ -1,15 +1,20 @@
 package View;
 
+import Model.Movie;
+import Model.MovieService;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+
+import static View.Main.database;
 
 public class HomePage {
 
@@ -59,20 +64,21 @@ public class HomePage {
         topPane.getStyleClass().add("logoPane");
         BorderPane.setAlignment(topPane, Pos.TOP_CENTER);
 
+
         root.setTop(topPane);       // <<<<<<< TOP
 
+        // CENTRE SECTION STARTS.
 
+        HBox centrePane = new HBox(20);
 
-
-
-        root.setLeft(makeTrailerPane("Trailer one"));
-        root.setCenter(makeTrailerPane("Trailer two"));
-        root.setRight(makeTrailerPane("Trailer three"));
 
 
 
 
 
+        root.setLeft(makeTrailerPane(1));
+        root.setCenter(makeTrailerPane(2));
+        root.setRight(makeTrailerPane(3));
 
 
 
@@ -89,31 +95,44 @@ public class HomePage {
         root.setBottom(bottomPane);       // <<<<<<< BOTTOM
 
 
-        root.setLeft(makeTitlePane("Title"));
-        root.setCenter(makeTitlePane("Title"));
-        root.setRight(makeTitlePane("Title"));
+        //root.setLeft(makeTitlePane("red"));
+        //root.setCenter(makeTitlePane("blue"));
+        //root.setRight(makeTitlePane("green"));
 
     }
 
-    public static VBox makeTrailerPane(String name) {
+    public static VBox makeTrailerPane(int movieID) {
 
         VBox pane = new VBox(20);
         pane.setPrefSize(341, 153);
 
-        Button trailerButton = new Button(name);
-        trailerButton.setPrefSize(200, 250);
-        pane.getChildren().add(trailerButton);
-        trailerButton.setAlignment(Pos.CENTER);
+        Movie thisMovie = MovieService.selectById(movieID, database);
 
-        Media trailerMedia = new Media(Main.class.getResource("../Videos/video.mp4").toString());
+        Media trailerMedia = new Media(Main.class.getResource("../Videos/" + thisMovie.getfileName()).toString());
         MediaPlayer trailerPlayer = new MediaPlayer(trailerMedia);
         MediaView trailerVideo = new MediaView(trailerPlayer);
         trailerVideo.setFitWidth(341);
         trailerVideo.setFitHeight(200);
-
-        trailerPlayer.play();
-
         pane.getChildren().add(trailerVideo);
+
+        Button trailerButton = new Button(thisMovie.getmovieTitle());
+
+        trailerButton.setOnAction((ae) -> trailerPlayer.play());
+
+        trailerButton.setPrefSize(200, 250);
+        pane.getChildren().add(trailerButton);
+        trailerButton.setAlignment(Pos.CENTER);
+
+        Label someText1 = new Label("Hello1");
+        pane.getChildren().add(someText1);
+
+        Label someText2 = new Label("Hello2");
+        pane.getChildren().add(someText2);
+
+        Label someText3 = new Label("Hello3");
+        pane.getChildren().add(someText3);
+
+
 
         return pane;
 
@@ -124,12 +143,15 @@ public class HomePage {
 
 
         VBox pane = new VBox(20);
-        pane.setPrefSize(100, 50);
+        pane.setPadding(new Insets(40));
+        pane.setPrefSize(341, 153);
 
-        Button movieName = new Button(name );
+        pane.setStyle("-fx-background-color: " + name + ";");
+
+        Button movieName = new Button(name);
         movieName.setPrefSize(100, 50);
         pane.getChildren().add(movieName);
-        movieName.setAlignment(Pos.BOTTOM_CENTER );
+
 
 
         return pane;
