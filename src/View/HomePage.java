@@ -15,7 +15,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 
 import static View.Main.database;
-
+// comment
 public class HomePage {
 
     public static void makeHomePage() {
