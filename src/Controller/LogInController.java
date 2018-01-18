@@ -1,6 +1,9 @@
 package Controller;
 
+import View.*;
+
 public class LogInController {
+
 
     public static void loadHomePage() {
 
@@ -9,4 +12,5 @@ public class LogInController {
     }
 
 
-}
+
+    }
